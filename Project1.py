@@ -4,10 +4,9 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import seaborn as sns
 
-vendors = pd.read_csv('C:/Users/Adarsh\Desktop/Insurance Fraud Data/vendor_data.csv')
-insurance = pd.read_csv('C:/Users/Adarsh\Desktop/Insurance Fraud Data/insurance_data.csv')
-employees=pd.read_csv('C:/Users/Adarsh\Desktop/Insurance Fraud Data/employee_data.csv')
-
+vendors = pd.read_csv('data/vendor_data.csv')
+insurance = pd.read_csv('data/insurance_data.csv')
+employees=pd.read_csv('data/employee_data.csv')
 
 # Date conversion
 insurance['POLICY_EFF_DT']= pd.to_datetime(insurance['POLICY_EFF_DT'],format ="%Y-%m-%d")
