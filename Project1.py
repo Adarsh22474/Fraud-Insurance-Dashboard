@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import seaborn as sns
 
-vendors = pd.read_csv('C:/Users/Adarsh\Desktop/Insurance Fraud Data/vendor_data.csv')
-insurance = pd.read_csv('C:/Users/Adarsh\Desktop/Insurance Fraud Data/insurance_data.csv')
-employees=pd.read_csv('C:/Users/Adarsh\Desktop/Insurance Fraud Data/employee_data.csv')
+vendors = pd.read_csv('data/vendor_data.csv')
+insurance = pd.read_csv('data/insurance_data.csv')
+employees=pd.read_csv('data/employee_data.csv')
 
 
 # Date conversion
@@ -33,18 +33,37 @@ insurance["month"] = insurance["REPORT_DT"].dt.month
 
 
 
-# ============================================================
-# SIDEBAR FILTERS
-# ============================================================
+
+# ===================== SIDEBAR FILTERS =====================
+
 st.sidebar.header("Filters")
 
-state_filter = st.sidebar.multiselect(
-    "State",
-    insurance["STATE"].unique(),
-    default=insurance["STATE"].unique()
-)
+# ---- State Filter ----
+state_filter = st.sidebar.multiselect("State",options=insurance["STATE"].unique(), default=insurance["STATE"].unique())
 
-insurance = insurance[insurance["STATE"].isin(state_filter)]
+# ---- Education Filter ----
+education_filter = st.sidebar.multiselect("Customer Education", options=insurance["CUSTOMER_EDUCATION_LEVEL"].unique(), default=insurance["CUSTOMER_EDUCATION_LEVEL"].unique())
+
+# ---- Authority Contacted Filter ----
+authority_filter = st.sidebar.multiselect("Authority Contacted",options=insurance["AUTHORITY_CONTACTED"].dropna().unique(),default=insurance["AUTHORITY_CONTACTED"].dropna().unique())
+
+# ---- Social Class Filter ----
+social_class_filter = st.sidebar.multiselect("Social Class",options=insurance["SOCIAL_CLASS"].dropna().unique(),default=insurance["SOCIAL_CLASS"].dropna().unique())
+
+# ---- Risk Segmentation Filter ----
+risk_segment_filter = st.sidebar.multiselect("Risk Segmentation",options=insurance["RISK_SEGMENTATION"].dropna().unique(),default=insurance["RISK_SEGMENTATION"].dropna().unique())
+
+# ===================== APPLY ALL FILTERS =====================
+
+filtered_insurance = insurance[
+    (insurance["STATE"].isin(state_filter)) &
+    (insurance["CUSTOMER_EDUCATION_LEVEL"].isin(education_filter)) &
+    (insurance["AUTHORITY_CONTACTED"].isin(authority_filter)) &
+    (insurance["SOCIAL_CLASS"].isin(social_class_filter)) &
+    (insurance["RISK_SEGMENTATION"].isin(risk_segment_filter))
+]
+
+
 
 
 
