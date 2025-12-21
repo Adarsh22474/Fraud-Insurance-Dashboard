@@ -3,6 +3,60 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 import seaborn as sns
+import streamlit_authenticator as stauth
+
+
+
+
+
+# -------------------- CREDENTIALS --------------------
+
+credentials = {
+    "usernames": {
+        "adarsh": {
+            "name": "Adarsh Gupta",
+            "password": stauth.Hasher.hash("fraud2024")
+        },
+        "guest": {
+            "name": "Guest User",
+            "password": stauth.Hasher.hash("viewonly")
+        }
+    }
+}
+
+# -------------------- AUTHENTICATOR --------------------
+
+authenticator = stauth.Authenticate(
+    credentials=credentials,
+    cookie_name="fraud_dashboard",
+    key="auth_key_123",
+    cookie_expiry_days=1
+)
+
+# -------------------- LOGIN --------------------
+
+authenticator.login(location="main")
+
+auth_status = st.session_state.get("authentication_status")
+
+if auth_status is False:
+    st.error("Invalid username or password")
+    st.stop()
+
+if auth_status is None:
+    st.info("Use guest / viewonly to access the dashboard")
+    st.stop()
+
+# -------------------- LOGOUT (ONLY WHEN LOGGED IN) --------------------
+
+if auth_status:
+    authenticator.logout("Logout", "sidebar")
+    st.sidebar.markdown(f"👤 Logged in as **{st.session_state.get('name')}**")
+
+
+
+
+
 
 vendors = pd.read_csv('data/vendor_data.csv')
 insurance = pd.read_csv('data/insurance_data.csv')
@@ -287,6 +341,7 @@ with tab2:
 
 
 with tab3:
+        
      # -------------------- VENDOR RISK SUMMARY --------------------
 
         vendor_summary = (insurance.groupby('VENDOR_ID').agg(Claim_Count=('POLICY_NUMBER', 'count'),Avg_Claim_Severity=('CLAIM_AMOUNT', 'mean'),Approved_Claims=('approved_flag', 'sum'),Declined_Claims=('declined_flag', 'sum')).reset_index().sort_values(by='Avg_Claim_Severity', ascending=False))
@@ -496,15 +551,4 @@ with tab5:
         ax.tick_params(axis='x', rotation=45)
 
         st.pyplot(fig)
-
-  
-
-
-
-
-
-
-
-
-
 
