@@ -195,14 +195,14 @@ with tab2:
         c1, c2, c3, c4 = st.columns(4)
         c1.metric("Total Claim_Amount Filed",to_millions(Claim_Amount_Filed ))
         c2.metric("Total_Claim_Amount_Approved",to_millions(Claim_Amount_Processed))
-        c3.metric("Avg Claim Amount", Avg_Claim_Amount)
-        c4.metric("Median_Claim_Amount",Median_Claim_Amount)
+        c3.metric("Avg Claim Amount", '$ Avg_Claim_Amount')
+        c4.metric("Median_Claim_Amount",'$ Median_Claim_Amount')
         
 
         c5,c6,c7,c8= st.columns(4)
         c5.metric("Approval Rate", Approved_Claims_Count*100.00 /Total_Claims )
         c6.metric("Insurance Types", Insurance_Types)
-        c7.metric("Avg Time to Report (days)", f"{Avg_Time_to_Report:.1f}")
+        c7.metric("Avg Time to Report (days)", f"{Avg_Time_to_Report:.2f}")
         c8.metric("Average Insurance Tenure", Avg_Tenure)
 
 
@@ -355,7 +355,7 @@ with tab2:
 with tab3:
         c1,c2,c3,c4=st.columns(4)
         c1.metric("Number of Vendors",Vendor_Count)
-        c2.metric('Average Claim per Vendor',Claims_with_Vendors/Vendor_Count)
+        c2.metric('Average Claim per Vendor', f'{Claims_with_Vendors/Vendor_Count:.2f}')
         c3.metric("Average Claim Amount Filed Per Vendor",to_millions(Claim_Amount_Filed/Vendor_Count))
         c4.metric("Average Claim Amount Approved per Vendor",to_millions(Claim_Amount_Processed/Vendor_Count))
 
@@ -463,7 +463,7 @@ with tab4:
         c1,c2,c3,c4=st.columns(4)
         c1.metric("Number of Agents",Agent_Count)
         c2.metric("Approval Rate",Approved_Claims_Count*100.00 /Total_Claims)
-        c3.metric("Average Claims per Agent",Total_Claims/Agent_Count)
+        c3.metric("Average Claims per Agent",f"{Total_Claims/Agent_Count:.2f}")
         c4.metric("Average Claim Amount per Agent", to_millions(Claim_Amount_Filed/Agent_Count))
 
             # -------------------- AGENT APPROVAL RATE --------------------
