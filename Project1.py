@@ -117,6 +117,8 @@ filtered_insurance = insurance[
     (insurance["RISK_SEGMENTATION"].isin(risk_segment_filter))
 ]
 
+def to_millions(x):
+    return f"${x/1000000:.2f} M"
 
 
 
@@ -167,8 +169,8 @@ with tab1:
     
     c5,c6,c7,c8 = st.columns(4)
     c5.metric("Approved Claims", Approved_Claims_Count)
-    c6.metric("Total Claim Amount Filed", Claim_Amount_Filed )
-    c7.metric("Total_Premium_Received",Total_Premium)
+    c6.metric("Total Claim Amount Filed", to_millions(Claim_Amount_Filed))
+    c7.metric("Total_Premium_Received",to_millions(Total_Premium))
     c8.metric("Loss Ratio", f"{Loss_Ratio:.2f}")
 
     st.subheader("Insurance Data")
@@ -190,19 +192,18 @@ with tab2:
         avg_claim = insurance['CLAIM_AMOUNT'].mean()
         total_claims = insurance.shape[0]
 
-        c1, c2, c3, c4,c5 = st.columns(5)
-        c1.metric("Min Claim Amount", f"${min_claim:,.0f}")
-        c2.metric("Max Claim Amount", f"${max_claim:,.0f}")
-        c3.metric("Avg Claim Amount", f"${avg_claim:,.0f}")
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Total Claim_Amount Filed",to_millions(Claim_Amount_Filed ))
+        c2.metric("Total_Claim_Amount_Approved",to_millions(Claim_Amount_Processed))
+        c3.metric("Avg Claim Amount", Avg_Claim_Amount)
         c4.metric("Median_Claim_Amount",Median_Claim_Amount)
-        c5.metric("Approval Rate", Approved_Claims_Count*100.00 /Total_Claims )
+        
 
-        c6,c7,c8,c9,c10 = st.columns(5)
-        c6.metric("Total Claim_Amount Filed",Claim_Amount_Filed )
-        c7.metric("Total_Claim_Amount_Approved",Claim_Amount_Processed)
-        c8.metric("Insurance Types", Insurance_Types)
-        c9.metric("Avg Time to Report (days)", f"{Avg_Time_to_Report:.1f}")
-        c10.metric("Average Insurance Tenure", Avg_Tenure)
+        c5,c6,c7,c8= st.columns(4)
+        c5.metric("Approval Rate", Approved_Claims_Count*100.00 /Total_Claims )
+        c6.metric("Insurance Types", Insurance_Types)
+        c7.metric("Avg Time to Report (days)", f"{Avg_Time_to_Report:.1f}")
+        c8.metric("Average Insurance Tenure", Avg_Tenure)
 
 
         # -------------------- CLAIM AMOUNT BY INSURANCE TYPE --------------------
@@ -355,8 +356,8 @@ with tab3:
         c1,c2,c3,c4=st.columns(4)
         c1.metric("Number of Vendors",Vendor_Count)
         c2.metric('Average Claim per Vendor',Claims_with_Vendors/Vendor_Count)
-        c3.metric("Average Claim Amount Filed Per Vendor",Claim_Amount_Filed/Vendor_Count)
-        c4.metric("Average Claim Amount Approved per Vendor",Claim_Amount_Processed/Vendor_Count)
+        c3.metric("Average Claim Amount Filed Per Vendor",to_millions(Claim_Amount_Filed/Vendor_Count))
+        c4.metric("Average Claim Amount Approved per Vendor",to_millions(Claim_Amount_Processed/Vendor_Count))
 
      # -------------------- VENDOR RISK SUMMARY --------------------
 
@@ -463,7 +464,8 @@ with tab4:
         c1.metric("Number of Agents",Agent_Count)
         c2.metric("Approval Rate",Approved_Claims_Count*100.00 /Total_Claims)
         c3.metric("Average Claims per Agent",Total_Claims/Agent_Count)
-        c4.metric("Average Claim Amount per Agent", Claim_Amount_Filed/Agent_Count)
+        c4.metric("Average Claim Amount per Agent", to_millions(Claim_Amount_Filed/Agent_Count))
+
             # -------------------- AGENT APPROVAL RATE --------------------
 
         agent_level = (insurance.groupby('AGENT_ID').agg(Total_Claims=('CLAIM_STATUS', 'count'),Approved_Claims=('approved_flag', 'sum'),Declined_Claims=('declined_flag', 'sum')).reset_index())
