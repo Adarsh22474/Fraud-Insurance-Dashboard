@@ -6,7 +6,7 @@ Domain: Insurance | Fraud & Risk Analytics
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 This project is an **end-to-end Fraud Analytics and Claims Cost Control system** built to simulate how insurance companies detect **fraudulent claims, cost leakages, and operational inefficiencies** across the claims lifecycle.
 
 The project integrates:
@@ -20,7 +20,7 @@ The primary focus is on **decision-support analytics for fraud investigation and
 
 ---
 
-## 🎯 Business Context & Problem Statement
+##  Business Context & Problem Statement
 Insurance companies face rising losses due to:
 - Inflated repair invoices from vendors
 - Suspicious vendor–agent–customer collusion
@@ -50,7 +50,7 @@ An ER diagram was created to understand relational dependencies.
 
 ---
 
-## 🔍 Project Workflow
+##  Project Workflow
 
 ### 1️⃣ Dataset Selection & Business Understanding
 - Evaluated multiple datasets before selecting a **multi-table relational insurance fraud dataset**
@@ -76,7 +76,7 @@ Analysis was conducted at **five analytical levels**:
 
 ---
 
-### 📊 Claim-Level Analysis
+###  Claim-Level Analysis
 - Claim amount distribution & heavy right skew detection
 - Outlier detection using statistical thresholds (p95, p99)
 - Claim severity vs insurance type
@@ -91,7 +91,7 @@ A small % of high-severity claims drive the majority of losses; Life and Propert
 
 ---
 
-### 👥 Customer-Level Analysis
+###  Customer-Level Analysis
 - Age-based and tenure-based risk profiling
 - Early-tenure and mid-tenure fraud hotspot identification
 - Loss ratio vs customer lifecycle
@@ -102,7 +102,7 @@ Customers with **6–12 months tenure** exhibit the highest loss ratios — a cl
 
 ---
 
-### 🏗️ Vendor-Level Analysis
+###  Vendor-Level Analysis
 - Vendor claim severity benchmarking
 - Vendor concentration (Pareto analysis)
 - Vendor approval rate anomalies
@@ -115,7 +115,7 @@ Several vendors show **100% approval rates and extreme loss ratios**, indicating
 
 ---
 
-### 🧑‍💼 Employee / Agent-Level Analysis
+###  Employee / Agent-Level Analysis
 - Adjuster approval rate analysis
 - Settlement amount variance by agent
 - Identification of agents with perfect approvals
@@ -126,7 +126,7 @@ Widespread perfect approval behavior suggests systemic control weaknesses.
 
 ---
 
-### ⏱️ Temporal & Trend Analysis
+###  Temporal & Trend Analysis
 - Monthly and yearly claim trend analysis
 - Seasonality detection
 - Sudden spike detection (fraud wave indicators)
@@ -137,7 +137,7 @@ A massive spike in mid-2020 suggests either event-driven losses or organized fra
 
 ---
 
-## 📊 Power BI Dashboard
+##  Power BI Dashboard
 A **5-page interactive Power BI dashboard** was created and published on Power BI Service.
 
 🔗 Power BI Report Link:  
@@ -147,8 +147,7 @@ https://app.powerbi.com/groups/me/reports/61d7eabd-9f70-4cfa-8f0f-441c964e9c73/7
 1. Claim Overview & Anomaly Dashboard  
 2. Customer Risk Dashboard  
 3. Vendor Risk Dashboard  
-4. Employee / Adjuster Risk Dashboard  
-5. Temporal Trends Dashboard  
+4. Employee / Adjuster Risk Dashboard   
 
 Each dashboard includes:
 - Business KPIs
@@ -158,7 +157,7 @@ Each dashboard includes:
 
 ---
 
-## 🌐 Python & Streamlit Web Application
+##  Python & Streamlit Web Application
 The same analytical logic was replicated using **Python in VS Code**, followed by deployment using **Streamlit**.
 
 🔗 Live App:  
@@ -171,7 +170,7 @@ Purpose:
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 - **SQL** – Data audit, EDA, KPI computation
 - **Power BI** – Business intelligence & dashboards
 - **Python** – Analysis & data manipulation
@@ -180,7 +179,7 @@ Purpose:
 
 ---
 
-## 👥 Stakeholders Supported
+##  Stakeholders Supported
 - Fraud Investigation Team
 - Risk & Compliance Team
 - Claims Operations
@@ -198,7 +197,7 @@ Purpose:
 
 ---
 
-## 🚀 Key Skills Demonstrated
+##  Key Skills Demonstrated
 - Business problem formulation
 - Fraud analytics thinking
 - SQL-based data auditing
@@ -208,7 +207,7 @@ Purpose:
 
 ---
 
-## 🔮 Future Enhancements
+##  Future Enhancements Thought Of:
 - Fraud risk scoring models
 - Network analysis for collusion detection
 - Real-time fraud alerts
@@ -218,6 +217,7 @@ Purpose:
 
 ## ⭐ Why This Project Matters
 This project demonstrates **full-time readiness for Data Analyst / Fraud Analyst roles** by combining **business context, analytical rigor, and production-style delivery**.
+
 
 
 
