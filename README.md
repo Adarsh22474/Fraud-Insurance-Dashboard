@@ -215,8 +215,8 @@ Purpose:
 
 ---
 
-##  Why This Project Matters
-This project demonstrates **full-time readiness for Data Analyst / Fraud Analyst roles** by combining **business context, analytical rigor, and production-style delivery**.
+
+
 
 
 
