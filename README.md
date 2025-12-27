@@ -1,6 +1,6 @@
-# 🚨 Insurance Claims Fraud Detection & Cost Control Analytics System
+#  Insurance Claims Fraud Detection & Cost Control Analytics System
 
-## 👤 Author
+##  Author
 **Adarsh Gupta**  
 Domain: Insurance | Fraud & Risk Analytics  
 
@@ -52,14 +52,14 @@ An ER diagram was created to understand relational dependencies.
 
 ##  Project Workflow
 
-### 1️⃣ Dataset Selection & Business Understanding
+### 1️ Dataset Selection & Business Understanding
 - Evaluated multiple datasets before selecting a **multi-table relational insurance fraud dataset**
 - Defined fraud and cost control objectives before any analysis
 - Identified stakeholders and their decision needs upfront
 
 ---
 
-### 2️⃣ Data Audit & Validation (SQL)
+### 2️ Data Audit & Validation (SQL)
 Conducted a detailed **data audit using SQL**, including:
 - Row counts & uniqueness checks
 - Null and missing value analysis
@@ -71,7 +71,7 @@ This ensured **analytical reliability before visualization**.
 
 ---
 
-### 3️⃣ Exploratory & Diagnostic Analysis
+### 3️ Exploratory & Diagnostic Analysis
 Analysis was conducted at **five analytical levels**:
 
 ---
@@ -189,7 +189,7 @@ Purpose:
 
 ---
 
-## 📈 Business Impact (Simulated)
+##  Business Impact (Simulated)
 - Early fraud flagging for high-risk claims
 - Identification of vendor and agent collusion risks
 - Improved claim cost control visibility
@@ -215,8 +215,9 @@ Purpose:
 
 ---
 
-## ⭐ Why This Project Matters
+##  Why This Project Matters
 This project demonstrates **full-time readiness for Data Analyst / Fraud Analyst roles** by combining **business context, analytical rigor, and production-style delivery**.
+
 
 
 
